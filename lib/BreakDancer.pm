@@ -11,7 +11,19 @@ multi gen($path, &code) is export {
     }
 }
 
-multi gen($path is copy, %args, &code) is export {
+multi gen($path, @args, &code) is export {
+    mkpath "$basedir/$path";
+    for @args -> $a {
+        my $p = "$basedir/$path/$a";
+        mkpath $p;
+        given open("$p/index.htm", :w) {
+            .say: &code($a);
+            .close;
+        }
+    }
+}
+
+multi gen($path, %args, &code) is export {
     mkpath "$basedir/$path";
     for %args.kv -> $k, $v {
         my $p = "$basedir/$path/$k";

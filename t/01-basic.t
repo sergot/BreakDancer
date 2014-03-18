@@ -60,7 +60,7 @@ gen '/site', @sites, sub ($s) {
     return $s;
 }
 
-$basedir = $BreakDancer::basedir; # or maybe 'gen'?
+$basedir = 'notwww'; # or maybe 'gen'?
 
 ok "$basedir/index.htm".IO.f;
 is slurp("$basedir/index.htm").chomp, 'lalala';

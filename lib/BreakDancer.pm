@@ -1,7 +1,7 @@
 module BreakDancer;
 use Shell::Command;
 
-my $basedir = 'www';
+our $basedir = 'www';
 
 multi gen($path, &code) is export {
     mkpath "$basedir/$path";

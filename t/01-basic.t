@@ -27,18 +27,18 @@ gen '/site', @sites, sub ($s) {
 
 my $basedir = 'www'; # or maybe 'gen'?
 
-ok "$basedir/index.htm".IO.f;
-is slurp("$basedir/index.htm").chomp, 'lalala';
+ok "$basedir/index.html".IO.f;
+is slurp("$basedir/index.html").chomp, 'lalala';
 
 for %modules.kv -> $k, $v {
-    ok "$basedir/module/$k/index.htm".IO.f;
-    is slurp("$basedir/module/$k/index.htm").chomp,
+    ok "$basedir/module/$k/index.html".IO.f;
+    is slurp("$basedir/module/$k/index.html").chomp,
        ("$k: " ~ $v[1] x $v[0]);
 }
 
 for @sites -> $s {
-    ok "$basedir/site/$s/index.htm".IO.f;
-    is slurp("$basedir/site/$s/index.htm").chomp,
+    ok "$basedir/site/$s/index.html".IO.f;
+    is slurp("$basedir/site/$s/index.html").chomp,
        $s;
 }
 
@@ -62,18 +62,18 @@ gen '/site', @sites, sub ($s) {
 
 $basedir = 'notwww'; # or maybe 'gen'?
 
-ok "$basedir/index.htm".IO.f;
-is slurp("$basedir/index.htm").chomp, 'lalala';
+ok "$basedir/index.html".IO.f;
+is slurp("$basedir/index.html").chomp, 'lalala';
 
 for %modules.kv -> $k, $v {
-    ok "$basedir/module/$k/index.htm".IO.f;
-    is slurp("$basedir/module/$k/index.htm").chomp,
+    ok "$basedir/module/$k/index.html".IO.f;
+    is slurp("$basedir/module/$k/index.html").chomp,
        ("$k: " ~ $v[1] x $v[0]);
 }
 
 for @sites -> $s {
-    ok "$basedir/site/$s/index.htm".IO.f;
-    is slurp("$basedir/site/$s/index.htm").chomp,
+    ok "$basedir/site/$s/index.html".IO.f;
+    is slurp("$basedir/site/$s/index.html").chomp,
        $s;
 }
 
